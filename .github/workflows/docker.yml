@@ -11,18 +11,18 @@ jobs:
     steps:
       - name: Pull Latest Code
         run: |
-          cd /home/ubuntu/github-action-ci-cd
+          cd /home/ubuntu/GHA-PROJECT-CI-CD
           git pull origin master
 
       - name: Build Docker Image
         run: |
-          cd /home/ubuntu/github-action-ci-cd
-          docker build -t github-action-ci-cd .
+          cd /home/ubuntu/GHA-PROJECT-CI-CD
+          docker build -t GHA-PROJECT-CI-CD .
 
       - name: Run Tests
         run: |
-          cd /home/ubuntu/github-action-ci-cd
-          docker run --rm github-action-ci-cd npm run test
+          cd /home/ubuntu/GHA-PROJECT-CI-CD
+          docker run --rm GHA-PROJECT-CI-CD npm run test
 
   cd:
     needs: ci
@@ -33,4 +33,4 @@ jobs:
         run: |
           docker stop backend-prod || true
           docker rm backend-prod || true
-          docker run -d --name backend-prod -p 3000:3000 github-action-ci-cd
+          docker run -d --name backend-prod -p 3000:3000GHA-PROJECT-CI-CD
